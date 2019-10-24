@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  IMChatUIDemo
 //
 //  Created by MountainX on 2019/10/24.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface RootViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
