@@ -1,5 +1,6 @@
 #import "SceneDelegate.h"
 #import "RootViewController.h"
+#import "SSRootManager.h"
 
 @interface SceneDelegate ()
 
@@ -21,9 +22,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    RootViewController *rootVc = [[RootViewController alloc] init];
-    UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:rootVc];
-    self.window.rootViewController = rootNav;
+//    RootViewController *rootVc = [[RootViewController alloc] init];
+//    UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:rootVc];
+//    self.window.rootViewController = rootNav;
 }
 
 
@@ -38,6 +39,7 @@
 - (void)sceneDidBecomeActive:(UIScene *)scene  API_AVAILABLE(ios(13.0)){
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    [SSRootManager shareRootManager];
 }
 
 

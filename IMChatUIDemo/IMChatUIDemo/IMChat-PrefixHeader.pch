@@ -1,0 +1,27 @@
+//
+//  IMChat-PrefixHeader.pch
+//  IMChatUIDemo
+//
+//  Created by MountainX on 2019/10/25.
+//  Copyright © 2019 MTX Software Technology Co.,Ltd. All rights reserved.
+//
+
+#ifndef IMChat_PrefixHeader_pch
+#define IMChat_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import <NIMSDK/NIMSDK.h>
+#import <BmobSDK/Bmob.h>
+
+#import "PBData.h"
+#import "SSKit.h"
+
+#import "YYKit.h"
+#import "MJRefresh.h"
+
+#endif /* IMChat_PrefixHeader_pch */

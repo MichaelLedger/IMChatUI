@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "SSChatController.h"
 
 @interface RootViewController ()
 
@@ -19,6 +20,11 @@
     // Do any additional setup after loading the view.
     
     self.title = @"IMChat";
+    
+    SSChatController *chatVc = [[SSChatController alloc] init];
+    [self addChildViewController:chatVc];
+    [self.view addSubview:chatVc.view];
+    [chatVc didMoveToParentViewController:self];
 }
 
 /*

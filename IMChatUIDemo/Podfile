@@ -1,0 +1,15 @@
+platform :ios, ‘9.0’
+
+use_frameworks!
+
+target ‘IMChatUIDemo’ do
+
+pod 'IQKeyboardManager'
+pod 'MJRefresh'
+pod 'YYKit'
+
+pod 'NIMSDK'
+pod 'BmobSDK'
+pod 'Masonry'
+
+end

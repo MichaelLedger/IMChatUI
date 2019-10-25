@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "SSApplicationHelper.h"
+#import "SSRootManager.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +22,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [SSApplicationHelper applicationRegister];
+    
     if (@available(ios 13, *)) {
         // Initail window at SceneDeblegate->scene:willConnectToSession:options:
     } else {
@@ -27,14 +31,34 @@
         self.window.backgroundColor = [UIColor whiteColor];
         [self.window makeKeyAndVisible];
         
-        RootViewController *rootVc = [[RootViewController alloc] init];
-        UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:rootVc];
-        self.window.rootViewController = rootNav;
+//        RootViewController *rootVc = [[RootViewController alloc] init];
+//        UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:rootVc];
+//        self.window.rootViewController = rootNav;
+        
+        [SSRootManager shareRootManager];
     }
     
-    return YES;
+    return [[SSApplicationHelper shareApplicationHelper] application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
+// APP进入后台
+- (void)applicationDidEnterBackground:(UIApplication *)application{
+    NSInteger count = [[[NIMSDK sharedSDK] conversationManager] allUnreadCount] + [NIMSDK sharedSDK].systemNotificationManager.allUnreadCount;
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count];
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    [[NIMSDK sharedSDK] updateApnsToken:deviceToken];
+    cout(deviceToken);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    cout(userInfo);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    cout(error);
+}
 
 #pragma mark - UISceneSession lifecycle
 
